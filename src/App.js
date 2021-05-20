@@ -1,10 +1,14 @@
+
+// import HomePage from './components/pages/homepage.component';
+
+
 import './App.css';
-import HomePage from './components/pages/homepage.component';
+import Table from './components/table';
 
 function App() {
   return (
     <div className="App">
-      <HomePage/>
+      <Table/>
     </div>
   );
 }

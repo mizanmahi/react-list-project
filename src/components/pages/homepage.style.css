@@ -1,16 +1,17 @@
 .list-table {
-    width: 70%;
-    min-height: 50vh;
-    margin: 100px auto;
-    border-collapse: collapse;
+   width: 70%;
+   min-height: 50vh;
+   margin: 100px auto;
+   border-collapse: collapse;
 }
 
-td, th {
-    border: 1px solid #dddddd;
-    text-align: center;
-    padding: 5px;
+td,
+th {
+   border: 1px solid #dddddd;
+   text-align: center;
+   padding: 5px;
 }
 
 tr:nth-child(even) {
-    background-color: #dddddd;
-  }
+   background-color: #dddddd;
+}

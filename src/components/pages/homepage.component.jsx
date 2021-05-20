@@ -16,7 +16,7 @@ const HomePage = (props) => {
     }
     fetchUsers(URL).then((d) => {
       setUsers(d);
-      console.log(d.data.rows);
+      console.log(d);
     });
   }, [URL]);
 
