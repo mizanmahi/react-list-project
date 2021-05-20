@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { useTable } from "react-table";
-import axios from "axios";
+// import axios from "axios";
 
 // import MOCK_DATA from "./mock-data/MOCK_DATA.json";
 import fetchHeaders from "./table-column/table-column";
@@ -13,22 +13,22 @@ const Table = () => {
    const [data, setData] = useState([]);
    const [col, setCol] = useState([]);
 
-   useEffect(() => {
-      console.log("useeffect");
-      axios
-         .get(URL)
-         .then((response) => {
-            const data = response.data.data.rows;
-            setData(data);
-            console.log(data);
-         })
-         .catch((err) => console.log(err));
-   }, [URL]);
+   // useEffect(() => {
+   //    console.log("useeffect");
+   //    axios
+   //       .get(URL)
+   //       .then((response) => {
+   //          const data = response.data.data.rows;
+   //          setData(data);
+   //          console.log(data);
+   //       })
+   //       .catch((err) => console.log(err));
+   // }, [URL]);
 
    useEffect(() => {
-      fetchHeaders(URL).then((column) => {
+      fetchHeaders(URL).then(({column, rows}) => {
          setCol(column);
-         console.log(column);
+         setData(rows);
       });
    }, [URL]);
 
