@@ -1,8 +1,6 @@
 import React, { useEffect, useMemo, useState } from "react";
-import { useTable } from "react-table";
-// import axios from "axios";
+import { useTable, useSortBy } from "react-table";
 
-// import MOCK_DATA from "./mock-data/MOCK_DATA.json";
 import fetchHeaders from "./table-column/table-column";
 
 import "./pages/homepage.style.css";
@@ -13,41 +11,47 @@ const Table = () => {
    const [data, setData] = useState([]);
    const [col, setCol] = useState([]);
 
-   // useEffect(() => {
-   //    console.log("useeffect");
-   //    axios
-   //       .get(URL)
-   //       .then((response) => {
-   //          const data = response.data.data.rows;
-   //          setData(data);
-   //          console.log(data);
-   //       })
-   //       .catch((err) => console.log(err));
-   // }, [URL]);
-
    useEffect(() => {
-      fetchHeaders(URL).then(({column, rows}) => {
+      fetchHeaders(URL).then(({ column, rows }) => {
          setCol(column);
          setData(rows);
       });
    }, [URL]);
 
    const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
-      useTable({
-         columns: col,
-         data,
-      });
+      useTable(
+         {
+            columns: col,
+            data,
+            initialState: {
+               hiddenColumns: ["id"],
+               disableSortBy: true
+            }
+         },
+         useSortBy
+      );
 
    return (
       <div>
-         {data.length > 0 && col.length > 0 ? (
+         {data.length > 0 && col.length > 0 ? ( 
             <table {...getTableProps()} className="list-table">
                <thead>
                   {headerGroups.map((headerGroup) => (
                      <tr {...headerGroup.getHeaderGroupProps()}>
                         {headerGroup.headers.map((column) => (
-                           <th {...column.getHeaderProps()}>
+                           <th
+                              {...column.getHeaderProps(
+                                 column.getSortByToggleProps()
+                              )}
+                           >
                               {column.render("Header")}
+                              <span>
+                                 {column.isSorted
+                                    ? column.isSortedDesc
+                                       ? "🔽"
+                                       : "🔼"
+                                    : ""}
+                              </span>
                            </th>
                         ))}
                      </tr>
