@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState } from "react";
-import { useTable, useSortBy } from "react-table";
+import { useTable, useSortBy, useFilters } from "react-table";
 
 import fetchHeaders from "./table-column/table-column";
 
@@ -24,10 +24,10 @@ const Table = () => {
             columns: col,
             data,
             initialState: {
-               hiddenColumns: ["id"],
-               disableSortBy: true
-            }
+               hiddenColumns: [""]          
+            },
          },
+         useFilters,
          useSortBy
       );
 
@@ -52,6 +52,9 @@ const Table = () => {
                                        : "🔼"
                                     : ""}
                               </span>
+                              {
+                                 column.canFilter ? column.render("Filter") : null  
+                              }
                            </th>
                         ))}
                      </tr>
