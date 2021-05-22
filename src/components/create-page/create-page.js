@@ -18,11 +18,17 @@ const CreatePage = () => {
          })
          .catch((err) => console.log(err));
    }, []);
+
+   const submitHandler = (e) => {
+      e.preventDefault()
+   }
+
    return (
       <div className="container form-container">
-         <form>
+         <h2 className="form-title">Get Form</h2>
+         <form onSubmit={submitHandler}>
          {formData ? <FormElements formData={formData} /> : null}
-            <button type="submit" className="btn btn-primary">
+            <button type="submit" className="btn btn-primary btn-lg">
                Submit
             </button>
          </form>

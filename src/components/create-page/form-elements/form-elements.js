@@ -1,7 +1,7 @@
 import React from "react";
 import Checkbox from "./checkbox";
 import Input from "./input";
-import Select from "./selec";
+import Select from "./select";
 import TextArea from "./text-area";
 
 const FormElements = ({ formData }) => {

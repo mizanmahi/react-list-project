@@ -7,9 +7,9 @@ const Checkbox = ({ fieldData }) => {
    return (
       <div className="mb-3 form-check">
          <h3>{title}</h3>
-         {options.map((option) => {
+         {options.map((option,i) => {
             return (
-               <div >
+               <div key={i}>
                   <input
                      className="form-check-input"
                      type={type}
@@ -17,8 +17,6 @@ const Checkbox = ({ fieldData }) => {
                      value={val}
                      onChange={(e) => setVal(e.target.value)}
                      name={title}
-
-                     // checked={fieldData.default === option.key}
                   />
                   <label className="form-check-label">{option.label}</label>
                </div>
