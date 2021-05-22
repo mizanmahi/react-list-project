@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useTable, useSortBy, useFilters } from "react-table";
 
 import fetchHeaders from "./table-column/table-column";

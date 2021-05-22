@@ -1,4 +1,3 @@
-import react from "react";
 
 const Searchinput = ({ column }) => {
    const { filterValue, setFilter } = column;
