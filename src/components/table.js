@@ -3,7 +3,7 @@ import { useTable, useSortBy, useFilters } from "react-table";
 
 import fetchHeaders from "./table-column/table-column";
 
-import "./pages/homepage.style.css";
+import "./table.style.css";
 
 const Table = () => {
    const URL = "http://localhost/api/list.php";

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import swal from "sweetalert";
 
 // form elements
 import Input from "./form-elements/input";
@@ -9,6 +10,7 @@ import Radio from "./form-elements/radio";
 
 // css
 import "./create-page.style.css";
+import Repeater from "./form-elements/repeater";
 
 const CreatePage = () => {
    const URL = "http://localhost/api/get_form.php";
@@ -19,11 +21,12 @@ const CreatePage = () => {
       user_email: "",
       details: "",
       user_gender: "",
+      work_place: "",
+      designation: ""
    });
-
    console.log(submitData);
+
    const fields = formData ? formData.data.fields[0] : null;
-   console.log(fields ? Object.entries(fields) : {});
 
    useEffect(() => {
       axios
@@ -36,18 +39,47 @@ const CreatePage = () => {
 
    const handleChange = (e) => {
       const { name, value } = e.target;
-      console.log("target " + name);
-      setSubmitData(prev => {
+      setSubmitData((prev) => {
          return {
             ...prev,
-            [name]: value
-         }
-      })
+            [name]: value,
+         };
+      });
    };
 
    const submitHandler = (e) => {
-      console.log(submitData);
-   }
+      e.preventDefault();
+      axios({
+         method: "post",
+         url: "http://localhost/api/submit_form.php",
+         data: JSON.stringify(submitData),
+      }).then((res) => {
+         if (res.data.status === "success") {
+            swal(
+               `${res.data.status}`,
+               `${res.data.messages.join(" ")} and the id is ${
+                  res.data.data.id
+               }`,
+               "success"
+            );
+
+            setSubmitData({
+               user_name: "",
+               user_email: "",
+               details: "",
+               user_gender: "",
+            })
+         } else {
+            swal(
+               `${res.data.status}`,
+               `${res.data.messages.join(" ")} and the id is ${
+                  res.data.data.id
+               }`,
+               "error"
+            );
+         }
+      });
+   };
 
    return (
       <div className="container form-container">
@@ -90,8 +122,16 @@ const CreatePage = () => {
                              chnageHandler={handleChange}
                           />
                        );
-                    }else{
-                       return " "
+                    } else if (field[1].type === "repeater") {
+                       return (
+                          <Repeater
+                             key={i}
+                             fieldData={field}
+                             chnageHandler={handleChange}
+                          />
+                       );
+                    } else {
+                       return " ";
                     }
                  })
                : "Loading Fields.."}

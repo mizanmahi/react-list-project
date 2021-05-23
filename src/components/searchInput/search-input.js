@@ -7,6 +7,7 @@ const Searchinput = ({ column }) => {
    }
    return (
       <input
+      className="form-control text-success my-2"
          type="text"
          value={filterValue || ""}
          onChange={filterHandler}
