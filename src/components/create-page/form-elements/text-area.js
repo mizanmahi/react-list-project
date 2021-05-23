@@ -1,8 +1,6 @@
-import React, { useState } from "react";
-
 const TextArea = ({ fieldData }) => {
-   const { html_attr, title, required, value, validate } = fieldData;
-   const [val, setVal] = useState(value);
+   const name = fieldData[0];
+   const { html_attr, title, required, value, validate } = fieldData[1];
    const { class: classNames, ...html_attri } = html_attr;
 
    return (
@@ -13,9 +11,9 @@ const TextArea = ({ fieldData }) => {
             rows="3"
             {...html_attri}
             required={required}
-            value={val}
+            value={value}
             validate={validate}
-            onChange={(e) => setVal(e.target.value)}
+            name={name}
          />
       </div>
    );
