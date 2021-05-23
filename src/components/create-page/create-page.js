@@ -68,6 +68,8 @@ const CreatePage = () => {
                user_email: "",
                details: "",
                user_gender: "",
+               work_place: "",
+               designation: ""
             })
          } else {
             swal(
@@ -101,7 +103,7 @@ const CreatePage = () => {
                           <TextArea
                              key={i}
                              fieldData={field}
-                             val={submitData[0]}
+                             val={submitData[field[0]]}
                              chnageHandler={handleChange}
                           />
                        );
@@ -128,6 +130,7 @@ const CreatePage = () => {
                              key={i}
                              fieldData={field}
                              chnageHandler={handleChange}
+                             val={[submitData.work_place, submitData.designation]}
                           />
                        );
                     } else {

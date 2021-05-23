@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./repeater.style.css";
 
-const Repeater = ({ fieldData, chnageHandler }) => {
+const Repeater = ({ fieldData, chnageHandler, val }) => {
    const name = fieldData[0];
    const { html_attr, required, title, validate, repeater_fields } = fieldData[1];
    const { class: classNames, ...html_attri } = html_attr;
@@ -32,6 +32,7 @@ const Repeater = ({ fieldData, chnageHandler }) => {
                         name={name}
                         className={`form-control ${classNames}`}
                         onChange={chnageHandler}
+                        value={val[i]}
                      />
                   </div>
                );
