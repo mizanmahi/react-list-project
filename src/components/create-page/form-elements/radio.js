@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const Radio = ({ fieldData }) => {
+const Radio = ({ fieldData, chnageHandler }) => {
    const name = fieldData[0];
    const {
       title,
@@ -12,8 +12,11 @@ const Radio = ({ fieldData }) => {
    } = fieldData[1];
    const { class: classNames, ...html_attri } = html_attr;
 
+   const [defaultVal, setDefaultVal] = useState(defaultValue)
+
    return (
       <>
+         <h3 className="title">{title}</h3>
          {options.map((option, i) => {
             return (
                <div className="form-check" key={i}>
@@ -23,9 +26,13 @@ const Radio = ({ fieldData }) => {
                      name={name}
                      id={`radio ${i}`}
                      value={option.key}
-                     // checked
+                     onChange={chnageHandler}
+                     required={required}
+                     checked={defaultVal === option.key}
+                     onClick={() => setDefaultVal(option.key)}
+                     {...html_attri}
                   />
-                  <label class="form-check-label" for={`radio ${i}`}>
+                  <label className="form-check-label" htmlFor={`radio ${i}`}>
                      { option.label }
                   </label>
                </div>

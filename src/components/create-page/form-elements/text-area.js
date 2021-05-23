@@ -1,8 +1,8 @@
-const TextArea = ({ fieldData }) => {
+const TextArea = ({ fieldData, chnageHandler, val}) => {
    const name = fieldData[0];
    const { html_attr, title, required, value, validate } = fieldData[1];
    const { class: classNames, ...html_attri } = html_attr;
-
+   val = val ? val: value; 
    return (
       <div className="mb-3">
          <label className="form-label">{title}</label>
@@ -11,9 +11,10 @@ const TextArea = ({ fieldData }) => {
             rows="3"
             {...html_attri}
             required={required}
-            value={value}
+            value={val}
             validate={validate}
             name={name}
+            onChange={chnageHandler}
          />
       </div>
    );
