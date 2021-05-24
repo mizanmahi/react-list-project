@@ -5,7 +5,7 @@
 ### Install dependencies
 
     npm install or npm i
-    yarn | start
+    ( yarn | npm ) start
 
 Check in browser on [http://localhost:3000/](http://localhost:3000/)
 
