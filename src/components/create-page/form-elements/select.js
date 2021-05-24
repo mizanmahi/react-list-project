@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 
 const Select = ({ fieldData, chnageHandler, val }) => {
-
    const name = fieldData[0];
    const {
       title,
@@ -12,7 +11,7 @@ const Select = ({ fieldData, chnageHandler, val }) => {
    } = fieldData[1];
    const { class: classNames, ...html_attri } = html_attr;
 
-   const [defaultVal, setDefaultVal] = useState(defaultValue)
+   const [defaultVal, setDefaultVal] = useState(defaultValue);
 
    return (
       <div className="form-group">
@@ -24,12 +23,14 @@ const Select = ({ fieldData, chnageHandler, val }) => {
             name={name}
             value={defaultVal}
             onChange={(e) => {
-                chnageHandler(e);
-                setDefaultVal(val)
+               chnageHandler(e);
+               setDefaultVal(val);
             }}
          >
             {options.map((option) => (
-               <option key={option.key} value={option.key}>{option.label}</option>
+               <option key={option.key} value={option.key}>
+                  {option.label}
+               </option>
             ))}
          </select>
       </div>

@@ -24,7 +24,7 @@ const Table = () => {
             columns: col,
             data,
             initialState: {
-               hiddenColumns: [""]          
+               hiddenColumns: [""],
             },
          },
          useFilters,
@@ -33,7 +33,7 @@ const Table = () => {
 
    return (
       <div>
-         {data.length > 0 && col.length > 0 ? ( 
+         {data.length > 0 && col.length > 0 ? (
             <table {...getTableProps()} className="list-table">
                <thead>
                   {headerGroups.map((headerGroup) => (
@@ -48,13 +48,13 @@ const Table = () => {
                               <span>
                                  {column.isSorted
                                     ? column.isSortedDesc
-                                       ? "🔽"
-                                       : "🔼"
+                                       ? "⏬"
+                                       : "⏫"
                                     : ""}
                               </span>
-                              {
-                                 column.canFilter ? column.render("Filter") : null  
-                              }
+                              {column.canFilter
+                                 ? column.render("Filter")
+                                 : null}
                            </th>
                         ))}
                      </tr>

@@ -12,7 +12,7 @@ const Radio = ({ fieldData, chnageHandler }) => {
    } = fieldData[1];
    const { class: classNames, ...html_attri } = html_attr;
 
-   const [defaultVal, setDefaultVal] = useState(defaultValue)
+   const [defaultVal, setDefaultVal] = useState(defaultValue);
 
    return (
       <>
@@ -33,7 +33,7 @@ const Radio = ({ fieldData, chnageHandler }) => {
                      {...html_attri}
                   />
                   <label className="form-check-label" htmlFor={`radio ${i}`}>
-                     { option.label }
+                     {option.label}
                   </label>
                </div>
             );

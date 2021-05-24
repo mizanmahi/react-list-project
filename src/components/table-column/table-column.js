@@ -15,13 +15,13 @@ async function fetchHeaders(url) {
                     Header: headers[key].title,
                     accessor: key,
                     Filter: Searchinput,
-                    disableSortBy: headers[key].sortable ? false : true
+                    disableSortBy: headers[key].sortable ? false : true,
                  }
                : {
                     Header: headers[key].title,
                     accessor: key,
                     Filter: "",
-                    disableSortBy: headers[key].sortable ? false : true
+                    disableSortBy: headers[key].sortable ? false : true,
                  };
          }),
       rows: info,
