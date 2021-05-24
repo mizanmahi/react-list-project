@@ -22,7 +22,7 @@ const CreatePage = () => {
       details: "",
       user_gender: "",
       work_place: "",
-      designation: ""
+      designation: "",
    });
 
    const fields = formData ? formData.data.fields[0] : null;
@@ -68,8 +68,8 @@ const CreatePage = () => {
                details: "",
                user_gender: "",
                work_place: "",
-               designation: ""
-            })
+               designation: "",
+            });
          } else {
             swal(
                `${res.data.status}`,
@@ -129,7 +129,10 @@ const CreatePage = () => {
                              key={i}
                              fieldData={field}
                              chnageHandler={handleChange}
-                             val={[submitData.work_place, submitData.designation]}
+                             val={[
+                                submitData.work_place,
+                                submitData.designation,
+                             ]}
                           />
                        );
                     } else {

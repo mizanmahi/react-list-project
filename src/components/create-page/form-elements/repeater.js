@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./repeater.style.css";
 
 const Repeater = ({ fieldData }) => {
-   const { html_attr, required, title, validate, repeater_fields } =
+   const { html_attr, required, title, validate, repeater_fields, value } =
       fieldData[1];
    const { class: classNames, ...html_attri } = html_attr;
    const fieldsArr = Object.entries(repeater_fields);
@@ -18,9 +18,13 @@ const Repeater = ({ fieldData }) => {
       const newFields = [...fields];
       setFields(newFields);
    };
+
    return (
       <>
          {fields.map((field, i) => {
+            let { work_place, designation } = value[i]
+               ? value[i]
+               : { work_place: "", designation: "" };
             return (
                <div className="repeater" key={i}>
                   <h3 className="text-success">{title}</h3>
@@ -38,6 +42,12 @@ const Repeater = ({ fieldData }) => {
                               required={required}
                               validate={validate}
                               {...html_attri}
+                              value={
+                                 name === "designation"
+                                    ? designation
+                                    : work_place
+                              }
+                              onChange={() => {}}
                            />
                         </div>
                      );
