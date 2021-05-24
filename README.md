@@ -18,6 +18,7 @@ Check in browser on [http://localhost:3000/](http://localhost:3000/)
 - React Table
 - Axios
 - Swal
+- Bootstrap
 
 
 # About this project
