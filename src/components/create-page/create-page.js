@@ -24,7 +24,6 @@ const CreatePage = () => {
       work_place: "",
       designation: ""
    });
-   console.log(submitData);
 
    const fields = formData ? formData.data.fields[0] : null;
 
