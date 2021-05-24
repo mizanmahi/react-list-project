@@ -1,5 +1,7 @@
 # React-Table
 
+<img src="https://i.ibb.co/bPg3jBY/table2.png" alt="table2" border="0">
+
 # Quick Start ![rocket](https://github.githubassets.com/images/icons/emoji/unicode/1f680.png)
 
 ### Install dependencies
